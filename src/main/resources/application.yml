@@ -1,0 +1,13 @@
+server:
+  error:
+    include-stacktrace: on-param
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/currency?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    username: root
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+
