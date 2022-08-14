@@ -3,21 +3,16 @@ package pedro.neurotech.neurotechapi.CurrencyAPIClient;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import pedro.neurotech.neurotechapi.domain.CurrencyRate;
+import pedro.neurotech.neurotechapi.model.CurrencyRate;
 import pedro.neurotech.neurotechapi.service.CurrencyRateService;
-
-
 import java.net.URI;
-
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-import static pedro.neurotech.neurotechapi.CurrencyAPIClient.CurrencyAPIClientConfigs.frequencyToUpdateDB;
 
 @Log4j2
 @Component
@@ -78,7 +73,7 @@ public class CurrencyAPIClient implements DisposableBean, Runnable {
             System.out.println(e);
         }
 
-        //currencyRateService.deleteAll();
+        //currencyRateService.deleteAll(); //Usar apenas se você quiser deletar os registros da base sem deletar a base
         if(!currencyRateService.isEmpty()){
             this.initializeDB();
         }
@@ -103,7 +98,6 @@ public class CurrencyAPIClient implements DisposableBean, Runnable {
                         CurrencyRate.class);
                 log.info(response.getBody());
                 currencyRateService.addNewRegistry(response.getBody());
-                //Thread.sleep(1000);
                 Thread.sleep(CurrencyAPIClientConfigs.frequencyToUpdateDB*24*60*60*1000);
             }catch(InterruptedException e){
                 System.out.println(e);
