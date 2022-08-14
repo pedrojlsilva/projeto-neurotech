@@ -1,9 +1,8 @@
 package pedro.neurotech.neurotechapi.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import pedro.neurotech.neurotechapi.domain.CurrencyRate;
+import pedro.neurotech.neurotechapi.model.CurrencyRate;
 import pedro.neurotech.neurotechapi.repository.CurrencyRateRepository;
 
 import java.sql.Date;

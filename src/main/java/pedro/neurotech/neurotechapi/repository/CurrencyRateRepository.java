@@ -1,7 +1,7 @@
 package pedro.neurotech.neurotechapi.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pedro.neurotech.neurotechapi.domain.CurrencyRate;
+import pedro.neurotech.neurotechapi.model.CurrencyRate;
 
 import java.sql.Date;
 import java.util.List;
